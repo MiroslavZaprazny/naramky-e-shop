@@ -19,5 +19,6 @@
 <body>
     {{ $slot }}
 </body>
+<script src={{ asset('js/navbarCollapse.js') }}></script>
 
 </html>
