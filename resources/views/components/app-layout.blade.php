@@ -14,10 +14,13 @@
             font-family: 'Nunito', sans-serif;
         }
     </style>
+    @livewireStyles
 </head>
 
 <body>
     {{ $slot }}
+
+    @livewireScripts
 </body>
 <script src={{ asset('js/navbarCollapse.js') }}></script>
 
