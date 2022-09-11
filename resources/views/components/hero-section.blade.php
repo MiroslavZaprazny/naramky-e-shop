@@ -17,15 +17,16 @@
                 <br>
                 Poskytujeme aj možnosť <span class="font-semibold underline"> výroby vlasného náramku! </span>
             </p>
-            <div class="mt-8 space-y-2 flex flex-col justify-center md:block">
-                <button
+            <div
+                class="mt-8 space-y-2 flex flex-col justify-center md:block md:space-y-0 md:space-x-2 text-center md:text-left">
+                <a href={{ route('bracelet.index') }}
                     class=" bg-light-green hover:bg-dark-green text-white rounded-xl py-3 px-5 transition ease-in duration-200">
                     Prehľad náramkov
-                </button>
-                <button
+                </a>
+                <a href=""
                     class=" bg-light-navy-blue hover:bg-dark-navy-blue text-white rounded-xl py-3 px-5 transition ease-in duration-200">
                     Výroba náramku podľa Vašich predstáv
-                </button>
+                </a>
             </div>
         </div>
         <div class="hidden lg:block">

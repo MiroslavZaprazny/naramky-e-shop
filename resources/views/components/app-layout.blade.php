@@ -13,11 +13,20 @@
         body {
             font-family: 'Nunito', sans-serif;
         }
+
+        html {
+            scroll-behavior: smooth
+        }
+
+        .rotate {
+            transform: rotate(180deg);
+        }
     </style>
     @livewireStyles
 </head>
 
 <body>
+    <x-navigation />
     {{ $slot }}
 
     @livewireScripts

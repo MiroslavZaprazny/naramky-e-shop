@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\BraceletController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,3 +15,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::view('/', 'index');
+
+Route::get('/bracelets', [BraceletController::class, 'index'])->name('bracelet.index');
