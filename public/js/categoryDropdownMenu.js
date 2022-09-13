@@ -1,5 +1,7 @@
 const dropdownButton = document.getElementById('dropdown-button');
 const chevron = document.getElementById('chevron');
+const button1 = document.getElementById('button1');
+const button2 = document.getElementById('button2');
 let isDropDownMenuOpen = false;
 
 dropdownButton.addEventListener('click', (e) => {
@@ -12,9 +14,18 @@ dropdownButton.addEventListener('click', (e) => {
     menu.style.opacity = '1';
     dropdownButton.classList.remove('hover:bg-light-green-500');
     dropdownButton.style.backgroundColor = '#A0D995'
+    button1.removeAttribute('disabled');
+    button2.removeAttribute('disabled');
+    button2.style.cursor = 'pointer'
+    button1.style.cursor = 'pointer'
+    button2.style.cursor = 'pointer'
   } else {
     menu.style.opacity = '0';
     dropdownButton.style.backgroundColor = ''
     dropdownButton.classList.add('hover:bg-light-green-500');
+    button1.style.cursor = 'default'
+    button2.style.cursor = 'default'
+    button1.disabled = 'true';
+    button2.disabled = 'true';
   }
 })
