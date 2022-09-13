@@ -1,0 +1,1 @@
+<livewire:bracelet-show />

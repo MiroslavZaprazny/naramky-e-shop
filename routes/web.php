@@ -17,3 +17,4 @@ use Illuminate\Support\Facades\Route;
 Route::view('/', 'index');
 
 Route::get('/bracelets', [BraceletController::class, 'index'])->name('bracelet.index');
+Route::get('/bracelets/{id}', [BraceletController::class, 'show'])->name('bracelet.show');

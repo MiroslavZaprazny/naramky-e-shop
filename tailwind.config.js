@@ -18,7 +18,8 @@ module.exports = {
         'dark-navy-blue': '#488FB1',
         'light-green-500': '#D3ECA7',
         'custom': '#D3E4CD',
-        'custom2': '#99A799'
+        'custom2': '#99A799',
+        'dark-green-500': '#A0D995'
       }
     },
   },

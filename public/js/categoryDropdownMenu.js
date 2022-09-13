@@ -6,14 +6,13 @@ let isDropDownMenuOpen = false;
 
 dropdownButton.addEventListener('click', (e) => {
   isDropDownMenuOpen = !isDropDownMenuOpen;
-  let [button, menu] = dropdownButton.parentNode.children
+  let menu = document.getElementById('dropdown-items');
 
   chevron.classList.toggle('rotate')
 
   if (isDropDownMenuOpen === true) {
     menu.style.opacity = '1';
     dropdownButton.classList.remove('hover:bg-light-green-500');
-    dropdownButton.style.backgroundColor = '#A0D995'
     button1.removeAttribute('disabled');
     button2.removeAttribute('disabled');
     button2.style.cursor = 'pointer'
@@ -21,7 +20,6 @@ dropdownButton.addEventListener('click', (e) => {
     button2.style.cursor = 'pointer'
   } else {
     menu.style.opacity = '0';
-    dropdownButton.style.backgroundColor = ''
     dropdownButton.classList.add('hover:bg-light-green-500');
     button1.style.cursor = 'default'
     button2.style.cursor = 'default'
