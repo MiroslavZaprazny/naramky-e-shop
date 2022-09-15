@@ -12,10 +12,10 @@
     <div class="px-24 pb-24">
         <div class="flex">
             <div class="grid grid-cols-6 gap-8 max-w-5xl flex-shrink-0">
-                <img src={{ asset('images/test2.jpeg') }} alt="" class="rounded-lg col-span-3 object-contain">
-                <img src={{ asset('images/test2.jpeg') }} alt="" class="rounded-lg col-span-3 object-contain">
-                <img src={{ asset('images/test2.jpeg') }} alt="" class="rounded-lg col-span-3 object-contain"
-                    style="width:463px; height:345px;">
+                @foreach ($bracelet->images as $image)
+                    <img src={{ asset($image->filename) }} alt="" class="rounded-lg col-span-3 object-contain"
+                        style="width:463px; height:345px;">
+                @endforeach
             </div>
             <div class="description max-w-max ml-36">
                 <h4 class="font-semibold text-3xl max-w-max text-gray-800">

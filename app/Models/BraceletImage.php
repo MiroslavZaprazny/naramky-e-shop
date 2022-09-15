@@ -5,12 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Bracelet extends Model
+class BraceletImage extends Model
 {
     use HasFactory;
-
-    public function images()
-    {
-        return $this->hasMany(BraceletImage::class);
-    }
 }
