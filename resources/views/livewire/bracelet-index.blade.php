@@ -8,7 +8,7 @@
 
         <div class="main-section mt-16 grid grid-cols-6 justify-center items-center md:gap-x-10 gap-y-8">
             @foreach ($bracelets as $bracelet)
-                <a href={{ route('bracelet.show', ['id' => $bracelet->id]) }}
+                <a href={{ route('bracelet.show', $bracelet->id) }}
                     class="flex flex-col h-96 w-64 md:w-96 col-span-3 md:col-span-6 xl:col-span-3 lg:col-span-4 col-start-2 bg-custom hover:bg-custom2 rounded-lg rounded-b-2xl items-center transition ease-in duration-300">
                     <img src={{ asset($bracelet->thumbnail) }} class="w-52 h-96 object-cover">
                     <div

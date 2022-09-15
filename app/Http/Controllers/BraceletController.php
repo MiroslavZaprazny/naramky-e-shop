@@ -14,6 +14,8 @@ class BraceletController extends Controller
 
     public function show(Bracelet $bracelet)
     {
-        return view('bracelets.show');
+        return view('bracelets.show', [
+            'bracelet' => $bracelet
+        ]);
     }
 }

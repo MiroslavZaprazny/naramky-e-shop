@@ -1,1 +1,1 @@
-<livewire:bracelet-show />
+<livewire:bracelet-show :bracelet="$bracelet" />
