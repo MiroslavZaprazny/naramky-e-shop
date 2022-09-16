@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 
 use App\Models\Bracelet;
-use Illuminate\Http\Request;
 
 class BraceletController extends Controller
 {
@@ -14,6 +13,8 @@ class BraceletController extends Controller
 
     public function show(Bracelet $bracelet)
     {
+        $bracelet->load('images');
+
         return view('bracelets.show', [
             'bracelet' => $bracelet
         ]);
