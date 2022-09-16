@@ -21,6 +21,9 @@
                 <h4 class="font-semibold text-3xl max-w-max text-gray-800">
                     {{ $bracelet->title }}
                 </h4>
+                <p class="mt-4 ml-1 text-gray-800 text-lg">
+                    {{ $bracelet->price }} €
+                </p>
                 <p class="mt-8 leading-8 text-gray-700">
                     {{ $bracelet->description }}
                 </p>
