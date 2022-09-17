@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\BraceletController;
+use App\Http\Controllers\ShoppingCartController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -18,3 +19,4 @@ Route::view('/', 'index');
 
 Route::get('/bracelets', [BraceletController::class, 'index'])->name('bracelet.index');
 Route::get('/bracelets/{bracelet:id}', [BraceletController::class, 'show'])->name('bracelet.show');
+Route::get('/shopping-cart', [ShoppingCartController::class, 'show'])->name('shopping-cart.show');

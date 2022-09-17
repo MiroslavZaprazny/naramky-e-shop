@@ -9,9 +9,14 @@ class ShoppingCartButton extends Component
 {
     public $quantity;
 
-    protected $listeners = ['itemWasAddedToCart'];
+    protected $listeners = ['itemWasAddedToCart', 'itemWasRemovedFromCart'];
 
     public function itemWasAddedToCart()
+    {
+        $this->quantity = Session::get('shoppingCart')->totalQuantity;
+    }
+
+    public function itemWasRemovedFromCart()
     {
         $this->quantity = Session::get('shoppingCart')->totalQuantity;
     }

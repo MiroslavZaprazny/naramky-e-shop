@@ -1,15 +1,17 @@
 <div
     class="p-3 rounded-full w-full sm:w-auto text-gray-800 hover:bg-gray-100 transition ease-in duration-150 cursor-pointer">
     <button class="sm:hidden">Košík</button>
-    <div class="relative">
+    <a href={{ route('shopping-cart.show') }} class="relative">
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
             class="w-6 h-6 hidden sm:block">
             <path stroke-linecap="round" stroke-linejoin="round"
                 d="M2.25 3h1.386c.51 0 .955.343 1.087.835l.383 1.437M7.5 14.25a3 3 0 00-3 3h15.75m-12.75-3h11.218c1.121-2.3 2.1-4.684 2.924-7.138a60.114 60.114 0 00-16.536-1.84M7.5 14.25L5.106 5.272M6 20.25a.75.75 0 11-1.5 0 .75.75 0 011.5 0zm12.75 0a.75.75 0 11-1.5 0 .75.75 0 011.5 0z" />
         </svg>
-        <div
-            class="absolute flex text-white items-center justify-center -top-5 left-3 text-xs bg-light-green rounded-full h-6 w-6">
-            {{ Session::get('shoppingCart')->totalQuantity }}
-        </div>
-    </div>
+        @if (Session::has('shoppingCart') && Session::get('shoppingCart')->totalQuantity != 0)
+            <div
+                class="absolute flex text-white items-center justify-center -top-5 left-3 text-xs bg-light-green rounded-full h-6 w-6">
+                {{ Session::get('shoppingCart')->totalQuantity }}
+            </div>
+        @endif
+    </a>
 </div>

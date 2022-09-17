@@ -41,4 +41,17 @@ class Cart
         $this->totalPrice += $bracelet->price;
         $this->totalQuantity++;
     }
+
+    public function remove($item)
+    {
+        $this->items[$item['id']]['qty']--;
+        $this->items[$item['id']]['price'] -= $this->items[$item['id']]['bracelet']['price'];
+
+        $this->totalQuantity--;
+        $this->totalPrice -= $this->items[$item['id']]['bracelet']['price'];
+
+        if ($this->items[$item['id']]['qty'] <= 0) {
+            unset($this->items[$item['id']]);
+        }
+    }
 }
