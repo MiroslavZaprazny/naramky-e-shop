@@ -9,6 +9,7 @@
     @vite('resources/css/app.css')
     <!-- Fonts -->
     <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
     <style>
         body {
             font-family: 'Nunito', sans-serif;
@@ -28,7 +29,7 @@
 <body>
     <x-navigation />
     {{ $slot }}
-
+    <x-success-message />
     @livewireScripts
 </body>
 <script src={{ asset('js/navbarCollapse.js') }}></script>

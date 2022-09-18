@@ -22,6 +22,7 @@ class LoginController extends Controller
         if (Hash::check($request->password, $user->password)) {
             Auth::login($user);
 
+            session()->flash('success', 'Úspešné ste sa prihlásili');
             return redirect(route('bracelet.index'));
         }
 
@@ -32,6 +33,7 @@ class LoginController extends Controller
     {
         Auth::logout();
 
+        session()->flash('success', 'Úspešné ste sa odlhlásili');
         return back();
     }
 }

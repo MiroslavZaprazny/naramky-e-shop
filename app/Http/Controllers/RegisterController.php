@@ -17,6 +17,7 @@ class RegisterController extends Controller
     {
         User::create($request->validated());
 
+        session()->flash('success', 'Úspešné ste sa zaregistrovali');
         return redirect(route('login.create'));
     }
 }
