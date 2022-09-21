@@ -29,8 +29,15 @@
                 Kontakt
             </a>
         </div>
-        <div class="p-3 w-full sm:w-auto rounded-full hover:bg-gray-100 transition ease-in duration-150">
-            @auth
+        @auth
+            @if (auth()->user()->role === 'admin')
+                <div class="p-3 w-full sm:w-auto rounded-full hover:bg-gray-100 transition ease-in duration-150">
+                    <a href={{ route('admin.index') }}>
+                        Administrátorský panel
+                    </a>
+                </div>
+            @endif
+            <div class="p-3 w-full sm:w-auto rounded-full hover:bg-gray-100 transition ease-in duration-150">
                 <form action={{ route('login.destroy') }} method="post">
                     @csrf
                     <button type="submit" class="flex items-center">
@@ -42,13 +49,15 @@
                         </svg>
                     </button>
                 </form>
-            @endauth
-            @guest
+            </div>
+        @endauth
+        @guest
+            <div class="p-3 w-full sm:w-auto rounded-full hover:bg-gray-100 transition ease-in duration-150">
                 <a href={{ route('login.create') }}>
                     Prihlásenie
                 </a>
-            @endguest
-        </div>
+            </div>
+        @endguest
         <livewire:shopping-cart-button />
     </div>
 </header>

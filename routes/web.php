@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminPanelController;
 use App\Http\Controllers\BraceletController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
@@ -30,3 +31,5 @@ Route::post('/logout', [LoginController::class, 'destroy'])->name('login.destroy
 
 Route::get('/register', [RegisterController::class, 'create'])->name('register.create')->middleware('guest');
 Route::post('/register', [RegisterController::class, 'store'])->name('register.store')->middleware('guest');
+
+Route::get('/admin-panel', [AdminPanelController::class, 'index'])->name('admin.index')->middleware('admin');
