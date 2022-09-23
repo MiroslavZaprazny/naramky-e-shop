@@ -13,8 +13,8 @@
         <div class="flex">
             <div class="grid grid-cols-6 gap-8 max-w-5xl flex-shrink-0">
                 @foreach ($bracelet->images->toArray() as $image)
-                    <img wire:key="{{ $bracelet['id'] }}" src={{ asset($image['filename']) }} alt=""
-                        class="rounded-lg col-span-3 object-contain" style="width:463px; height:345px;">
+                    <img wire:key="{{ $bracelet['id'] }}" src={{ asset('images/bracelet-imgs/' . $image['filename']) }} alt=""
+                        class="rounded-lg col-span-3 object-cover" style="width:463px; height:345px;">
                 @endforeach
             </div>
             <div class="description max-w-max ml-36">

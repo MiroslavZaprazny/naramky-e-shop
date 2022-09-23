@@ -8,4 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class BraceletImage extends Model
 {
     use HasFactory;
+
+    protected $fillable = ['bracelet_id', 'filename'];
 }
