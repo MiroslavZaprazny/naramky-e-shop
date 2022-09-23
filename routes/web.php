@@ -22,6 +22,8 @@ Route::view('/', 'index');
 
 Route::get('/bracelets', [BraceletController::class, 'index'])->name('bracelet.index');
 Route::get('/bracelets/{bracelet:id}', [BraceletController::class, 'show'])->name('bracelet.show');
+Route::get('/bracelets-create', [BraceletController::class, 'create'])->name('bracelet.create');
+Route::post('/bracelets-create', [BraceletController::class, 'store'])->name('bracelet.store');
 
 Route::get('/shopping-cart', [ShoppingCartController::class, 'show'])->name('shopping-cart.show');
 

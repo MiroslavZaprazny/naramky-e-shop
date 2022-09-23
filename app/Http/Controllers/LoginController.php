@@ -19,7 +19,7 @@ class LoginController extends Controller
     {
         $user = User::where('email', $request->email)->first();
 
-        if (Hash::check($request->password, $user->password)) {
+        if (Hash::check($request->password, $user?->password)) {
             Auth::login($user);
 
             session()->flash('success', 'Úspešné ste sa prihlásili');

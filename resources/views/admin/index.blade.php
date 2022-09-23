@@ -1,5 +1,15 @@
 <x-app-layout>
-    <div class="px-24 py-18">
+    <div class="px-24 py-12">
+        <div class="mb-10 w-40">
+            <a href={{ route('bracelet.create') }}
+                class="flex items-center bg-dark-navy-blue hover:bg-light-navy-blue text-white rounded-xl px-3 py-3 transition ease-in duration-200">
+                Pridať náramok
+                <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="w-6 h-6">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6" />
+                </svg>
+            </a>
+        </div>
         <div class="flex flex-col">
             <div class="-my-2 overflow-x-auto sm:-mx-6 lg:-mx-8">
                 <div class="py-2 align-middle inline-block min-w-full sm:px-6 lg:px-8">
