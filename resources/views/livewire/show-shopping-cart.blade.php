@@ -60,15 +60,15 @@
     </div>
     @if (Session::has('shoppingCart') && Session::get('shoppingCart')->totalQuantity != 0)
         <div class="ml-auto max-w-3xl -mr-7 mt-12">
-            <button
-                class="flex items-center bg-dark-green hover:bg-custom2 text-white px-3 py-4 rounded-full transition ease-in duration-200">
-                Doprava a platba
+            <a href={{route('shipping.create')}}
+                class="flex items-center bg-dark-green hover:bg-custom2 text-white px-3 py-4 rounded-full transition ease-in duration-200 w-32">
+                Checkout
                 <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
                     class="w-5 h-5 ml-2 text-white">
                     <path stroke-linecap="round" stroke-linejoin="round"
                         d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
                 </svg>
-            </button>
+            </a>
         </div>
     @endif
 </div>
