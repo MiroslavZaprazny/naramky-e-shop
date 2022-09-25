@@ -25,7 +25,7 @@
             sm:flex-row items-start sm:items-center sm:space-x-8 font-semibold text-gray-800"
         id="collapse-menu">
         <div class="p-3 w-full sm:w-auto rounded-full hover:bg-gray-100 transition ease-in duration-150">
-            <a href="#kontakt">
+            <a href="http://127.0.0.1:8000/#kontakt">
                 Kontakt
             </a>
         </div>

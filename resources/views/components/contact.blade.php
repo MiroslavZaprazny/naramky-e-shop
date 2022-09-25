@@ -9,7 +9,7 @@
                 </svg>
             </div>
             <p class="ml-2">
-                +421 000 000 000
+                +421 951 782 717
             </p>
         </div>
         <div class="flex items-center">
@@ -21,7 +21,7 @@
                 </svg>
             </div>
             <p class="ml-2">
-                email@email.com
+                nikikays.business@gmail.com
             </p>
         </div>
     </div>

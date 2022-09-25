@@ -3,6 +3,7 @@
 namespace App\Models;
 
 use App\Models\Bracelet;
+use Exception;
 
 class Cart
 {
@@ -44,11 +45,15 @@ class Cart
 
     public function remove($item)
     {
-        $this->items[$item['id']]['qty']--;
-        $this->items[$item['id']]['price'] -= $this->items[$item['id']]['bracelet']['price'];
+        try {
+            $this->items[$item['id']]['qty']--;
+            $this->items[$item['id']]['price'] -= $this->items[$item['id']]['bracelet']['price'];
 
-        $this->totalQuantity--;
-        $this->totalPrice -= $this->items[$item['id']]['bracelet']['price'];
+            $this->totalQuantity--;
+            $this->totalPrice -= $this->items[$item['id']]['bracelet']['price'];
+        } catch(Exception $e) {
+            abort(403);
+        }
 
         if ($this->items[$item['id']]['qty'] <= 0) {
             unset($this->items[$item['id']]);
