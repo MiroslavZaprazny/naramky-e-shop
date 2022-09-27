@@ -1,3 +1,28 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.step {
+    display: none;
+}
+
+.active {
+    display: block;
+}
+
+.step-active {
+    background-color: black;
+    color: white;
+}
+
+.progress-bar::before,
+.progress {
+    content: "";
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 4px;
+    width: 100%;
+    background-color: black;
+    z-index: -1 !important;
+}

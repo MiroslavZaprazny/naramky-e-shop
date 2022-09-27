@@ -59,14 +59,14 @@
         </div>
     </div>
     @if (Session::has('shoppingCart') && Session::get('shoppingCart')->totalQuantity != 0)
-        <div class="ml-auto max-w-3xl -mr-7 mt-12">
-            <a href={{route('shipping.create')}}
+        <div class="ml-auto max-w-3xl -mr-12 mt-12">
+            <a href={{ route('shipping.create') }}
                 class="flex items-center bg-dark-green hover:bg-custom2 text-white px-3 py-4 rounded-full transition ease-in duration-200 w-32">
                 Checkout
-                <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                    class="w-5 h-5 ml-2 text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                    stroke="currentColor" class="w-5 h-5 ml-2">
                     <path stroke-linecap="round" stroke-linejoin="round"
-                        d="M4.5 12h15m0 0l-6.75-6.75M19.5 12l-6.75 6.75" />
+                        d="M15.75 10.5V6a3.75 3.75 0 10-7.5 0v4.5m11.356-1.993l1.263 12c.07.665-.45 1.243-1.119 1.243H4.25a1.125 1.125 0 01-1.12-1.243l1.264-12A1.125 1.125 0 015.513 7.5h12.974c.576 0 1.059.435 1.119 1.007zM8.625 10.5a.375.375 0 11-.75 0 .375.375 0 01.75 0zm7.5 0a.375.375 0 11-.75 0 .375.375 0 01.75 0z" />
                 </svg>
             </a>
         </div>
