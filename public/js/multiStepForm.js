@@ -8,6 +8,12 @@ let stepCount = 0;
 
 next.forEach(btn => {
   btn.addEventListener('click', (e) => {
+    const isValidated = validateInputs(e);
+
+    if (isValidated === false) {
+      return;
+    }
+
     stepCount++;
     updateSteps();
     updateProgressBar();
@@ -38,3 +44,87 @@ const updateProgressBar = () => {
     }
   })
 }
+const validateInputs = (e) => {
+  const step = e.target.closest('.step')
+  const inputs = step.querySelectorAll('input');
+  let validationState = false;
+  //first step validation
+  if (stepCount === 0) {
+    inputs.forEach(input => {
+      const container = input.closest('div')
+      const errorMsg = container.querySelector('.error-msg')
+      if (input.value == '') {
+        errorMsg.innerText = '';
+        errorMsg.innerText = 'Toto pole je povinné';
+        errorMsg.style.opacity = 1;
+
+        setTimeout(() => {
+          errorMsg.style.opacity = 0;
+        }, 5000)
+
+        validationState = false;
+      } else if (input.type === 'email' && !validateEmail(input.value)) {
+        errorMsg.innerText = '';
+        errorMsg.innerText = 'Nesprávny formát emailu';
+        errorMsg.style.opacity = 1;
+
+        setTimeout(() => {
+          errorMsg.style.opacity = 0;
+        }, 5000)
+
+        validationState = false;
+      } else {
+        errorMsg.style.opacity = 0;
+
+        validationState = true;
+      }
+    })
+    //second step validation
+    return validationState;
+  }
+
+  if (stepCount === 1) {
+    const container = inputs[0].closest('.step')
+    const errorMsg = container.querySelector('.error-msg')
+    if (inputs[0].checked === false && inputs[1].checked === false) {
+      errorMsg.style.opacity = 1;
+
+      setTimeout(() => {
+        errorMsg.style.opacity = 0;
+      }, 5000)
+
+      validationState = false;
+    } else {
+      errorMsg.style.opacity = 0;
+      validationState = true;
+    }
+    return validationState;
+  }
+  if (stepCount === 2) {
+    const container = inputs[0].closest('.step')
+    const errorMsg = container.querySelector('.error-msg')
+    if (inputs[0].checked === false && inputs[1].checked === false) {
+      errorMsg.style.opacity = 1;
+
+      setTimeout(() => {
+        errorMsg.style.opacity = 0;
+      }, 5000)
+
+      validationState = false;
+    } else {
+      errorMsg.style.opacity = 0;
+      validationState = true;
+    }
+    return validationState;
+
+  }
+}
+
+const validateEmail = (email) => {
+  return String(email)
+    .toLowerCase()
+    .match(
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    );
+};
+

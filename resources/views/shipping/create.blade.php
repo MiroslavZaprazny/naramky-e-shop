@@ -39,20 +39,57 @@
                     <div>
                         <label class="block font-semibold text-lg mb-1">Meno</label>
                         <input type="text" class="border rounded-md h-12 w-64 px-2">
+                        <p class="error-msg text-sm text-red-500 mt-1" style="opacity:0;">
+                            Err
+                        </p>
                     </div>
                     <div>
                         <label class="block font-semibold text-lg mb-1">Priezvisko</label>
                         <input type="text" class="border rounded-md h-12 w-64 px-2">
+                        <p class="error-msg text-sm text-red-500 mt-1" style="opacity: 0;">
+                            Err
+                        </p>
                     </div>
                 </div>
-                <div class="flex items-center justify-center space-x-4 mt-10">
+                <div class="flex items-center justify-center space-x-4 mt-5">
+                    <div>
+                        <label class="block font-semibold text-lg mb-1">Ulica a číslo domu</label>
+                        <input type="text" class="border rounded-md h-12 w-64 px-2">
+                        <p class="error-msg text-sm text-red-500 mt-1" style="opacity:0;">
+                            Err
+                        </p>
+                    </div>
+                    <div>
+                        <label class="block font-semibold text-lg mb-1">PSČ</label>
+                        <input type="text" class="border rounded-md h-12 w-64 px-2">
+                        <p class="error-msg text-sm text-red-500 mt-1" style="opacity: 0;">
+                            Err
+                        </p>
+                    </div>
+                </div>
+                <div class="flex items-center justify-center space-x-4 mt-5">
+                    <div>
+                        <label class="block font-semibold text-lg mb-1">Mesto</label>
+                        <input type="text" class="border rounded-md h-12 w-130 px-2">
+                        <p class="error-msg text-sm text-red-500 mt-1" style="opacity:0;">
+                            Err
+                        </p>
+                    </div>
+                </div>
+                <div class="flex items-center justify-center space-x-4 mt-5">
                     <div>
                         <label class="block font-semibold text-lg mb-1">Email</label>
                         <input type="email" class="border rounded-md h-12 w-64 px-2">
+                        <p class="error-msg text-sm text-red-500 mt-1" style="opacity: 0;">
+                            Err
+                        </p>
                     </div>
                     <div>
                         <label class="block font-semibold text-lg mb-1">Telefón</label>
                         <input type="text" class="border rounded-md h-12 w-64 px-2">
+                        <p class="error-msg text-sm text-red-500 mt-1" style="opacity: 0;">
+                            Err
+                        </p>
                     </div>
                 </div>
                 <div class="flex justify-end mt-8">
@@ -76,7 +113,7 @@
                     onclick="Packeta.Widget.pick(packetaApiKey, showSelectedPickupPoint, packetaOptions)">
                     <div class="flex items-center justify-between">
                         <div class="flex items-center space-x-2">
-                            <input type="radio" name="packeta" id="packeta-radio">
+                            <input type="radio" name="shipping" value="packeta-dobierka" id="packeta-radio">
                             <svg width="30" height="22" viewBox="0 0 30 22" version="1.1"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <rect fill="#BA1B02" x="0" y="0" width="30" height="22"
@@ -103,7 +140,7 @@
                     class="border rounded-lg px-2 py-5 mt-4 font-semibold text-lg w-full hover:border-gray-700 hover:border-2 transition ease-in duration-200">
                     <div class="flex items-center justify-between">
                         <div class="flex items-center space-x-2">
-                            <input type="radio" name="gls" id="gls">
+                            <input type="radio" name="shipping" value="gls" id="gls">
                             <svg width="30" height="22" viewBox="0 0 30 22" version="1.1"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <rect fill="#061ab1" x="0" y="0" width="30" height="22"
@@ -134,6 +171,9 @@
                         </div>
                     </div>
                 </button>
+                <p class="error-msg mt-2 text-sm text-red-500" style="opacity: 0;">
+                    Vyberte jedno pole
+                </p>
                 <div class="packeta-selector-value text-gray-500 font-semibold text-sm mt-4">
                 </div>
                 <div class="flex items-center justify-between mt-8">
@@ -158,11 +198,11 @@
                 </div>
             </div>
             <div class="step">
-                <button type="button"
+                <button type="button" id="cash-container"
                     class="border rounded-lg px-2 py-5 mt-4 font-semibold text-lg w-full hover:border-gray-700 hover:border-2 transition ease-in duration-200">
                     <div class="flex items-center justify-between">
                         <div class="flex items-center space-x-2">
-                            <input type="radio" name="">
+                            <input type="radio" name="payment" value="cash" id="cash">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                 stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-gray-700">
                                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -177,11 +217,11 @@
                         </div>
                     </div>
                 </button>
-                <button type="button"
+                <button type="button" id="card-container"
                     class="border rounded-lg px-2 py-5 mt-4 font-semibold text-lg w-full hover:border-gray-700 hover:border-2 transition ease-in duration-200">
                     <div class="flex items-center justify-between">
                         <div class="flex items-center space-x-2">
-                            <input type="radio" name="">
+                            <input type="radio" name="payment" value="card" id="card">
                             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                 stroke-width="1.5" stroke="currentColor" class="w-5 h-5 text-gray-700">
                                 <path stroke-linecap="round" stroke-linejoin="round"
@@ -196,6 +236,9 @@
                         </div>
                     </div>
                 </button>
+                <p class="error-msg mt-2 text-sm text-red-500" style="opacity: 0;">
+                    Vyberte jedno pole
+                </p>
                 <div class="flex items-center justify-between mt-8">
                     <button type="button"
                         class="prev flex items-center bg-dark-navy-blue text-white rounded-lg px-6 py-3">
