@@ -11,7 +11,7 @@
 }
 
 .step-active {
-    @apply bg-progress-green;
+    background-color: black;
     color: white;
 }
 
@@ -23,12 +23,6 @@
     transform: translateY(-50%);
     height: 4px;
     width: 100%;
-    @apply bg-progress-line-green;
+    background-color: black;
     z-index: -1 !important;
-}
-
-.progress {
-    @apply bg-progress-green;
-    width: 0%;
-    transition: 0.3s;
 }

@@ -21,9 +21,7 @@ module.exports = {
         'custom': '#D3E4CD',
         'custom2': '#99A799',
         'dark-green-500': '#A0D995',
-        'dark-blue': '#0b1629',
-        'progress-green': '#1C6758',
-        'progress-line-green': '#90C8AC'
+        'dark-blue': '#0b1629'
       }
     },
   },

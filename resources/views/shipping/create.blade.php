@@ -1,6 +1,6 @@
 <x-app-layout>
     <div class="flex justify-center">
-        <form method="POST" action="" class="w-160">
+        <form method="POST" action="" class="w-160 ml-72">
             <div class="progress-bar relative flex justify-between mb-20">
                 <div class="progress relative flex justify-between" id="progress"></div>
                 <div class="step-active progress-step flex items-center justify-center w-9 h-9 rounded-full border z-10">
@@ -10,21 +10,21 @@
                     </div>
                 </div>
                 <div
-                    class="progress-step flex items-center justify-center w-9 h-9 rounded-full border-2 border-progress-green text-black bg-white z-10">
+                    class="progress-step flex items-center justify-center w-9 h-9 rounded-full border-2 border-black text-black bg-white z-10">
                     2
                     <div class="absolute top-12 left-48 text-black w-36 font-semibold">
                         Doprava
                     </div>
                 </div>
                 <div
-                    class="progress-step flex items-center justify-center w-9 h-9 rounded-full border-2 border-progress-green text-black bg-white z-10">
+                    class="progress-step flex items-center justify-center w-9 h-9 rounded-full border-2 border-black text-black bg-white z-10">
                     3
                     <div class="absolute top-12 right-48  text-black w-36 font-semibold text-right">
                         Platba
                     </div>
                 </div>
                 <div
-                    class="progress-step flex items-center justify-center w-9 h-9 rounded-full border-2 border-progress-green text-black bg-white z-10">
+                    class="progress-step flex items-center justify-center w-9 h-9 rounded-full border-2 border-black text-black bg-white z-10">
                     4
                     <div class="absolute top-12 -right-12 text-black w-36 font-semibold text-right">
                         Súhrn objednávky
@@ -93,7 +93,15 @@
                     </div>
                 </div>
                 <div class="flex justify-end mt-8">
-                    <x-next-button :name="'Doprava'" />
+                    <button type="button"
+                        class="next flex items-center bg-dark-navy-blue text-white rounded-lg px-6 py-3">
+                        Doprava
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
+                            stroke="currentColor" class="w-5 h-5 ml-2">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+                        </svg>
+                    </button>
                 </div>
             </div>
             <div class="mt-12 step">
@@ -169,8 +177,24 @@
                 <div class="packeta-selector-value text-gray-500 font-semibold text-sm mt-4">
                 </div>
                 <div class="flex items-center justify-between mt-8">
-                    <x-prev-button :name="'Fakturačné údaje'" />
-                    <x-next-button :name="'Platba'" />
+                    <button type="button"
+                        class="prev flex items-center bg-dark-navy-blue text-white rounded-lg px-6 py-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-2">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
+                        </svg>
+                        Fakturačné údaje
+                    </button>
+                    <button type="button"
+                        class="next flex items-center bg-dark-navy-blue text-white rounded-lg px-6 py-3">
+                        Platba
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-2">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+                        </svg>
+                    </button>
                 </div>
             </div>
             <div class="step">
@@ -216,20 +240,51 @@
                     Vyberte jedno pole
                 </p>
                 <div class="flex items-center justify-between mt-8">
-                    <x-prev-button :name="'Doprava'" />
-                    <x-next-button :name="'Súhrn objednávky'" />
+                    <button type="button"
+                        class="prev flex items-center bg-dark-navy-blue text-white rounded-lg px-6 py-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-2">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
+                        </svg>
+                        Doprava
+                    </button>
+                    <button type="button"
+                        class="next flex items-center bg-dark-navy-blue text-white rounded-lg px-6 py-3">
+                        Súhrn objednávky
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke-width="1.5" stroke="currentColor" class="w-5 h-5 ml-2">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M17.25 8.25L21 12m0 0l-3.75 3.75M21 12H3" />
+                        </svg>
+                    </button>
                 </div>
             </div>
             <div class="step">
                 <div class="flex items-center justify-between mt-8">
-                    <x-prev-button :name="'Platba'" />
                     <button type="button"
-                        class="bg-dark-navy-blue hover:bg-light-navy-blue text-white rounded-lg px-6 py-3 transition ease-in duration-200">
+                        class="prev flex items-center bg-dark-navy-blue text-white rounded-lg px-6 py-3">
+                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                            stroke-width="1.5" stroke="currentColor" class="w-5 h-5 mr-2">
+                            <path stroke-linecap="round" stroke-linejoin="round"
+                                d="M6.75 15.75L3 12m0 0l3.75-3.75M3 12h18" />
+                        </svg>
+                        Platba
+                    </button>
+                    <button type="button" class="bg-dark-navy-blue text-white rounded-lg px-6 py-3">
                         Potvrdiť objendávku
                     </button>
                 </div>
             </div>
         </form>
+        <div class="ml-52">
+            <h4 class="text-center font-semibold text-xl">
+                Váš košík
+            </h4>
+            <div class="border w-64">
+                test
+            </div>
+        </div>
     </div>
 </x-app-layout>
 

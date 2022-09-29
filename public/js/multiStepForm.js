@@ -8,8 +8,7 @@ let stepCount = 0;
 
 next.forEach(btn => {
   btn.addEventListener('click', (e) => {
-    const step = e.target.closest('.step')
-    const isValidated = validateInputs(step);
+    const isValidated = validateInputs(e);
 
     if (isValidated === false) {
       return;
@@ -44,14 +43,9 @@ const updateProgressBar = () => {
       step.classList.remove('step-active')
     }
   })
-
-  const activeProgressSteps = document.querySelectorAll('.step-active')
-
-  console.log(activeProgressSteps);
-  progress.style.width = ((activeProgressSteps.length - 1) / (progressSteps.length - 1)) * 100 + '%'
 }
-
-const validateInputs = (step) => {
+const validateInputs = (e) => {
+  const step = e.target.closest('.step')
   const inputs = step.querySelectorAll('input');
   let validationState = false;
   //first step validation
@@ -85,10 +79,10 @@ const validateInputs = (step) => {
         validationState = true;
       }
     })
+    //second step validation
     return validationState;
   }
 
-  //second step validation
   if (stepCount === 1) {
     const container = inputs[0].closest('.step')
     const errorMsg = container.querySelector('.error-msg')
@@ -106,7 +100,6 @@ const validateInputs = (step) => {
     }
     return validationState;
   }
-  //third step validation
   if (stepCount === 2) {
     const container = inputs[0].closest('.step')
     const errorMsg = container.querySelector('.error-msg')
