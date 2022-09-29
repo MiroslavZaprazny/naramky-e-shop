@@ -8,7 +8,8 @@ let stepCount = 0;
 
 next.forEach(btn => {
   btn.addEventListener('click', (e) => {
-    const isValidated = validateInputs(e);
+    const step = e.target.closest('.step')
+    const isValidated = validateInputs(step);
 
     if (isValidated === false) {
       return;
@@ -43,9 +44,14 @@ const updateProgressBar = () => {
       step.classList.remove('step-active')
     }
   })
+
+  const activeProgressSteps = document.querySelectorAll('.step-active')
+
+  console.log(activeProgressSteps);
+  progress.style.width = ((activeProgressSteps.length - 1) / (progressSteps.length - 1)) * 100 + '%'
 }
-const validateInputs = (e) => {
-  const step = e.target.closest('.step')
+
+const validateInputs = (step) => {
   const inputs = step.querySelectorAll('input');
   let validationState = false;
   //first step validation
@@ -79,10 +85,10 @@ const validateInputs = (e) => {
         validationState = true;
       }
     })
-    //second step validation
     return validationState;
   }
 
+  //second step validation
   if (stepCount === 1) {
     const container = inputs[0].closest('.step')
     const errorMsg = container.querySelector('.error-msg')
@@ -100,6 +106,7 @@ const validateInputs = (e) => {
     }
     return validationState;
   }
+  //third step validation
   if (stepCount === 2) {
     const container = inputs[0].closest('.step')
     const errorMsg = container.querySelector('.error-msg')
@@ -127,4 +134,3 @@ const validateEmail = (email) => {
       /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
     );
 };
-
