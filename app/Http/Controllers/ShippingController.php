@@ -13,7 +13,9 @@ class ShippingController extends Controller
         {
             abort(403);
         }
-        
-        return view('shipping.create');
+
+        return view('shipping.create', [
+            'cart' => Session::get('shoppingCart')
+        ]);
     }
 }

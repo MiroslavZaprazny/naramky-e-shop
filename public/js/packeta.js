@@ -32,7 +32,6 @@ function showSelectedPickupPoint(point) {
   const heading = '<h4 class="font-semibold text-lg"> Adresa odberného miesta </h4>';
   saveElement.innerText = '';
   if (point) {
-    console.log(point);
     saveElement.innerText = "\n Adresa: " + point.street + " - " + point.place + "\n Mesto: " + point
       .city + "\n PSČ: " + point.zip;
     saveElement.insertAdjacentHTML('afterBegin', heading);

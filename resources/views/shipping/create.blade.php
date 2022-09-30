@@ -38,14 +38,14 @@
                 <div class="flex items-center justify-center space-x-4 mt-10">
                     <div>
                         <label class="block font-semibold text-lg mb-1">Meno</label>
-                        <input type="text" class="border rounded-md h-12 w-64 px-2">
+                        <input type="text" name="first_name" class="border rounded-md h-12 w-64 px-2">
                         <p class="error-msg text-sm text-red-500 mt-1" style="opacity:0;">
                             Err
                         </p>
                     </div>
                     <div>
                         <label class="block font-semibold text-lg mb-1">Priezvisko</label>
-                        <input type="text" class="border rounded-md h-12 w-64 px-2">
+                        <input type="text" name="last_name" class="border rounded-md h-12 w-64 px-2">
                         <p class="error-msg text-sm text-red-500 mt-1" style="opacity: 0;">
                             Err
                         </p>
@@ -54,14 +54,14 @@
                 <div class="flex items-center justify-center space-x-4 mt-5">
                     <div>
                         <label class="block font-semibold text-lg mb-1">Ulica a číslo domu</label>
-                        <input type="text" class="border rounded-md h-12 w-64 px-2">
+                        <input type="text" name="address" class="border rounded-md h-12 w-64 px-2">
                         <p class="error-msg text-sm text-red-500 mt-1" style="opacity:0;">
                             Err
                         </p>
                     </div>
                     <div>
                         <label class="block font-semibold text-lg mb-1">PSČ</label>
-                        <input type="text" class="border rounded-md h-12 w-64 px-2">
+                        <input type="text" name="zip" class="border rounded-md h-12 w-64 px-2">
                         <p class="error-msg text-sm text-red-500 mt-1" style="opacity: 0;">
                             Err
                         </p>
@@ -70,7 +70,7 @@
                 <div class="flex items-center justify-center space-x-4 mt-5">
                     <div>
                         <label class="block font-semibold text-lg mb-1">Mesto</label>
-                        <input type="text" class="border rounded-md h-12 w-130 px-2">
+                        <input type="text" name="town" class="border rounded-md h-12 w-130 px-2">
                         <p class="error-msg text-sm text-red-500 mt-1" style="opacity:0;">
                             Err
                         </p>
@@ -79,14 +79,14 @@
                 <div class="flex items-center justify-center space-x-4 mt-5">
                     <div>
                         <label class="block font-semibold text-lg mb-1">Email</label>
-                        <input type="email" class="border rounded-md h-12 w-64 px-2">
+                        <input type="email" name="email" class="border rounded-md h-12 w-64 px-2">
                         <p class="error-msg text-sm text-red-500 mt-1" style="opacity: 0;">
                             Err
                         </p>
                     </div>
                     <div>
                         <label class="block font-semibold text-lg mb-1">Telefón</label>
-                        <input type="text" class="border rounded-md h-12 w-64 px-2">
+                        <input type="text" name="phone_number" class="border rounded-md h-12 w-64 px-2">
                         <p class="error-msg text-sm text-red-500 mt-1" style="opacity: 0;">
                             Err
                         </p>
@@ -221,7 +221,67 @@
                 </div>
             </div>
             <div class="step">
-                <div class="flex items-center justify-between mt-8">
+                <h4 class="font-semibold text-3xl text-gray-900 text-center">
+                    Súhrn objednávky
+                </h4>
+                <h4 class="font-semibold text-2xl text-gray-900 mt-10">
+                    Váš košík
+                </h4>
+                <div class="border py-4 px-3 rounded-lg mt-4">
+                    @foreach ($cart->items as $item)
+                        <div class="flex justify-between items-center {{ $loop->last ? '' : 'border-b' }}">
+                            <div class="flex space-y-3 ">
+                                <img src={{ $item['bracelet']->thumbnail }} class="rounded-md w-20 h-28 object-cover">
+                                <div class="ml-4">
+                                    <p class="font-semibold text-gray-800 text-lg">
+                                        {{ $item['bracelet']->title }}
+                                    </p>
+                                    <p class="text-gray-600">
+                                        Počet:
+                                        {{ $item['qty'] }}
+                                    </p>
+                                </div>
+                            </div>
+                            <div class="mr-6">
+                                <p class="font-semibold text-gray-800 text-lg">
+                                    {{ $item['price'] }}€
+                                </p>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+                <h4 class="font-semibold text-2xl text-gray-900 mt-5">
+                    Doprava
+                </h4>
+
+                <div class="border py-4 px-3 rounded-lg mt-4">
+                    <div class="selected-delivery"></div>
+                </div>
+
+                <h4 class="font-semibold text-2xl text-gray-900 mt-5">
+                    Platba
+                </h4>
+
+                <div class="border py-4 px-3 rounded-lg mt-4">
+                    <div class="selected-payment"></div>
+                </div>
+
+                <h4 class="font-semibold text-2xl text-gray-900 mt-5">
+                    Vaše údaje
+                </h4>
+
+                <div class="border py-4 px-3 rounded-lg mt-4">
+                    <div class="customer-info"></div>
+                </div>
+
+                <h4 class="font-semibold text-2xl text-gray-900 mt-8">
+                    Celková cena: 
+                    <span id="price" data-initial-price={{ $cart->totalPrice }}>
+                        {{ $cart->totalPrice }} 
+                    </span> €
+                </h4>
+
+                <div class="flex items-center justify-between mt-10 mb-20">
                     <x-prev-button :name="'Platba'" />
                     <button type="button"
                         class="bg-dark-navy-blue hover:bg-light-navy-blue text-white rounded-lg px-6 py-3 transition ease-in duration-200">
