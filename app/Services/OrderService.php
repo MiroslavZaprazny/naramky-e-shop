@@ -4,11 +4,9 @@ namespace App\Services;
 
 use App\Models\Order;
 use App\Http\Requests\StoreOrderRequest;
-use App\Mail\OrderShipped;
 use App\Mail\OrderShippedAdmin;
 use App\Mail\OrderShippedCustomer;
 use App\Models\OrderCustomerPersonalInfo;
-use App\Models\OrderPersonalInfo;
 use Illuminate\Support\Facades\Mail;
 
 class OrderService
@@ -24,6 +22,9 @@ class OrderService
                     $price += 3.30;
                     break;
                 }
+            default: {
+                    throw new \Exception('Invalid Shipping Method');
+                }
         }
 
         switch ($payment) {
@@ -31,12 +32,18 @@ class OrderService
                     $price += 1;
                     break;
                 }
+            case 'card': {
+                    break;
+                }
+            default: {
+                    throw new \Exception('Invalid Payment Method');
+                }
         }
 
         return $price;
     }
 
-    public function sendOrder(StoreOrderRequest $request, int $price)
+    public function handleOrder(StoreOrderRequest $request, int $price)
     {
         $order = Order::create([
             'shipping' => $request->input('shipping'),

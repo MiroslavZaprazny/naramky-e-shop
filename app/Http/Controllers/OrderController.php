@@ -28,7 +28,7 @@ class OrderController extends Controller
             $request->input('payment')
         );
 
-        $orderService->sendOrder($request, $price);
+        $orderService->handleOrder($request, $price);
 
         Session::forget('shoppingCart');
 
