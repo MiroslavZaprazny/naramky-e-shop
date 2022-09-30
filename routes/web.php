@@ -3,8 +3,8 @@
 use App\Http\Controllers\AdminPanelController;
 use App\Http\Controllers\BraceletController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\OrderController;
 use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\ShippingController;
 use App\Http\Controllers\ShoppingCartController;
 use Illuminate\Support\Facades\Route;
 
@@ -28,7 +28,8 @@ Route::post('/bracelets-create', [BraceletController::class, 'store'])->name('br
 
 Route::get('/shopping-cart', [ShoppingCartController::class, 'show'])->name('shopping-cart.show');
 
-Route::get('/shipping', [ShippingController::class, 'create'])->name('shipping.create');
+Route::get('/order', [OrderController::class, 'create'])->name('order.create');
+Route::post('/order', [OrderController::class, 'store'])->name('order.store');
 
 Route::get('/login', [LoginController::class, 'create'])->name('login.create')->middleware('guest');
 Route::post('/login', [LoginController::class, 'store'])->name('login.store')->middleware('guest');

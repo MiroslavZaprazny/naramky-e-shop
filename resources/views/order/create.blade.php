@@ -1,6 +1,7 @@
 <x-app-layout>
     <div class="flex justify-center">
-        <form method="POST" action="" class="w-160">
+        <form method="POST" action={{ route('order.store') }} method="POST" class="w-160">
+            @csrf
             <div class="progress-bar relative flex justify-between mb-20">
                 <div class="progress relative flex justify-between" id="progress"></div>
                 <div class="step-active progress-step flex items-center justify-center w-9 h-9 rounded-full border z-10">
@@ -275,15 +276,15 @@
                 </div>
 
                 <h4 class="font-semibold text-2xl text-gray-900 mt-8">
-                    Celková cena: 
+                    Celková cena:
                     <span id="price" data-initial-price={{ $cart->totalPrice }}>
-                        {{ $cart->totalPrice }} 
+                        {{ $cart->totalPrice }}
                     </span> €
                 </h4>
 
                 <div class="flex items-center justify-between mt-10 mb-20">
                     <x-prev-button :name="'Platba'" />
-                    <button type="button"
+                    <button type="submit"
                         class="bg-dark-navy-blue hover:bg-light-navy-blue text-white rounded-lg px-6 py-3 transition ease-in duration-200">
                         Potvrdiť objendávku
                     </button>

@@ -60,7 +60,7 @@
     </div>
     @if (Session::has('shoppingCart') && Session::get('shoppingCart')->totalQuantity != 0)
         <div class="ml-auto max-w-3xl -mr-12 mt-12">
-            <a href={{ route('shipping.create') }}
+            <a href={{ route('order.create') }}
                 class="flex items-center bg-dark-green hover:bg-custom2 text-white px-3 py-4 rounded-full transition ease-in duration-200 w-32">
                 Checkout
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
