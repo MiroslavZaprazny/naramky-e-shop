@@ -66,7 +66,6 @@ class PriceCalculationTest extends TestCase
 
         $orderService = new OrderService();
         $orderService->calculatePrice($price, $shipping, $payment);
-
     }
 
     public function test_invalid_shipping_throws_an_exception()
@@ -79,6 +78,5 @@ class PriceCalculationTest extends TestCase
 
         $orderService = new OrderService();
         $orderService->calculatePrice($price, $shipping, $payment);
-
     }
 }

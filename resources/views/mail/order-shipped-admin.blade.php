@@ -1,12 +1,20 @@
 @component('mail::message')
-    # Nová objevnávka č. {{ $order->id }}
+    # Nová objevnávka č. {{ $order->id }} !!
 
-    toto je test 1234 Administratorsky mail
+    Dodacie údaje
+    {{ $customerPersonalInfo->first_name }} {{ $customerPersonalInfo->first_name }}
+    {{ $customerPersonalInfo->address }} {{ $customerPersonalInfo->zip }} {{ $customerPersonalInfo->town }}
 
-    {{-- @component('mail::button', ['url' => ''])
-        Button Text
-    @endcomponent --}}
+    Objednané položky
+    @foreach ($orderItems as $item){{ $item->bracelet->title . ' ' . $item->qty . 'x' }} 
+    @endforeach
 
-    Ďakujeme,
-    Kay`s nature
+    Doprava
+    {{ $order->shipping }}
+
+    Platba
+    {{ $order->payment }}
+
+    Celková cena
+    {{ $order->total_price }} €
 @endcomponent

@@ -17,7 +17,6 @@ return new class extends Migration
             $table->id();
             $table->foreignId('order_id')->constrained();
             $table->foreignId('bracelet_id')->constrained();
-            $table->string('name');
             $table->string('price');
             $table->string('qty');
             $table->timestamps();

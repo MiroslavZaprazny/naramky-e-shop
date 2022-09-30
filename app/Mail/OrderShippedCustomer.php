@@ -3,16 +3,20 @@
 namespace App\Mail;
 
 use App\Models\Order;
+use App\Models\OrderItem;
 use Illuminate\Bus\Queueable;
-use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
+use App\Models\OrderCustomerPersonalInfo;
+use Illuminate\Contracts\Queue\ShouldQueue;
 
 class OrderShippedCustomer extends Mailable
 {
     use Queueable, SerializesModels;
 
     public $order;
+    public $customerPersonalInfo;
+    public $orderItems;
 
     /**
      * Create a new message instance.
@@ -22,6 +26,8 @@ class OrderShippedCustomer extends Mailable
     public function __construct(Order $order)
     {
         $this->order = $order;
+        $this->customerPersonalInfo = OrderCustomerPersonalInfo::where('order_id', $order->id)->first();
+        $this->orderItems = OrderItem::where('order_id', $order->id)->get();
     }
 
     /**

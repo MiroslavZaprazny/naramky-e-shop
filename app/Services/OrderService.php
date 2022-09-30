@@ -3,11 +3,12 @@
 namespace App\Services;
 
 use App\Models\Order;
-use App\Http\Requests\StoreOrderRequest;
+use App\Models\OrderItem;
 use App\Mail\OrderShippedAdmin;
 use App\Mail\OrderShippedCustomer;
-use App\Models\OrderCustomerPersonalInfo;
 use Illuminate\Support\Facades\Mail;
+use App\Http\Requests\StoreOrderRequest;
+use App\Models\OrderCustomerPersonalInfo;
 
 class OrderService
 {
@@ -45,6 +46,7 @@ class OrderService
 
     public function handleOrder(StoreOrderRequest $request, int $price)
     {
+        // dd($request->session());
         $order = Order::create([
             'shipping' => $request->input('shipping'),
             'payment' => $request->input('payment'),
@@ -63,13 +65,21 @@ class OrderService
             'phone_number' => $request->input('phone_number'),
         ]);
 
+        foreach ($request->session()->get('shoppingCart')->items as $braceletId => $item) {
+            OrderItem::create([
+                'order_id' => $order->id,
+                'bracelet_id' => $braceletId,
+                'qty' =>  $item['qty'],
+                'price' => $item['price']
+            ]);
+        }
+
         $this->sendMailing($order, $customerInfo);
     }
 
     private function sendMailing(Order $order, OrderCustomerPersonalInfo $customerInfo)
     {
         Mail::to($customerInfo)->send(new OrderShippedCustomer($order));
-        Mail::to('nikakainzova@gmail.com')->send(new OrderShippedAdmin($order));
-        Mail::to('miro.zaprazny8@gmail.com')->send(new OrderShippedAdmin($order));
+        Mail::to('nikikays.business@gmail.com')->send(new OrderShippedAdmin($order));
     }
 }
