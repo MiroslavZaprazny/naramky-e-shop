@@ -20,6 +20,7 @@ return new class extends Migration
             $table->text('description');
             $table->string('thumbnail');
             $table->float('price');
+            $table->integer('qty_in_stock')->default(1);
             $table->timestamps();
         });
     }

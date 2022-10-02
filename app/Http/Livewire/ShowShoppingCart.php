@@ -40,6 +40,13 @@ class ShowShoppingCart extends Component
     public function addItemToShoppingCart($item)
     {
         $cart = new Cart(Session::get('shoppingCart'));
+
+        $status = $cart->checkNumberOfProductsInStock(new Bracelet($item['bracelet']));
+        if ($status === 'error') {
+            $this->emit('inStockError');
+            return;
+        }
+
         $cart->add(new Bracelet($item['bracelet']));
 
         $this->cart = collect($cart);

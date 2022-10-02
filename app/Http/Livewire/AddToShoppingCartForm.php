@@ -16,6 +16,13 @@ class AddToShoppingCartForm extends Component
         $oldCart = Session::has('shoppingCart') ? Session::get('shoppingCart') : null;
 
         $cart = new Cart($oldCart);
+
+        $status = $cart->checkNumberOfProductsInStock($this->bracelet);
+        if ($status === 'error') {
+            $this->emit('inStockError', $status['qty']);
+            return;
+        }
+
         $cart->add($this->bracelet);
 
         Session::put('shoppingCart', $cart);

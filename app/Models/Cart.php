@@ -59,4 +59,15 @@ class Cart
             unset($this->items[$item['id']]);
         }
     }
+
+    public function checkNumberOfProductsInStock($bracelet)
+    {
+        if (!$this->items || !array_key_exists($bracelet->id, $this->items)) {
+            return;
+        }
+
+        if ($bracelet->qty_in_stock <= $this->items[$bracelet->id]['qty']) {
+            return 'error';
+        }
+    }
 }

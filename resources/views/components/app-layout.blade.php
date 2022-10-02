@@ -30,6 +30,8 @@
     <x-navigation />
     {{ $slot }}
     <x-success-message />
+
+    <livewire:in-stock-error />
     @livewireScripts
 </body>
 <script src={{ asset('js/navbarCollapse.js') }}></script>
