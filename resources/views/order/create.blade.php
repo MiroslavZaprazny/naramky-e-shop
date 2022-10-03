@@ -278,6 +278,7 @@
                 <div id="stripe" class="mt-8">
                     <input id="card-holder-name" type="text">
                     <div id="card-element"></div>
+                    <div id="error-msg-stripe" class="mt-2 text-red-500 font-semibold" hidden></div>
                 </div>
 
                 <h4 class="font-semibold text-2xl text-gray-900 mt-8">
@@ -289,10 +290,11 @@
                 <div class="flex items-center justify-between mt-10 mb-20">
                     <x-prev-button :name="'Platba'" />
                     <button type="submit" id="card-button"
-                        class="bg-dark-navy-blue hover:bg-light-navy-blue text-white rounded-lg px-6 py-3 transition ease-in duration-200">
+                        class="flex items-center space-x-2 bg-dark-navy-blue hover:bg-light-navy-blue text-white rounded-lg px-6 py-3 transition ease-in duration-200">
                         <span id="button-text">
                             Potvrdiť objendávku
                         </span>
+                        <div class="spinner" hidden></div>
                     </button>
                 </div>
             </div>
@@ -302,7 +304,5 @@
 
 <script src="https://widget.packeta.com/v6/www/js/library.js"></script>
 <script src={{ asset('js/packeta.js') }}></script>
-<script  src={{ asset('js/multiStepForm.js') }}></script>
-<script>
- 
-</script>
+<script src={{ asset('js/multiStepForm.js') }}></script>
+<script></script>

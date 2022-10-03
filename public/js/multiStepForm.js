@@ -89,13 +89,15 @@ const updateSteps = () => {
       selectedPaymentContainer.insertAdjacentHTML('afterbegin', html);
       //show stripe
       const stripe = Stripe(
-        "{{env('STRIPE_KEY')}}"
+        'pk_test_51LnbJvA4MDaFj70ss1ExWsJyzmGrObQ4S6ylUZrAnLpW9n3e060NrdcLVZclRrZByUG8SoxWrg5rJyEW9I2yFz5700q8mmuPYi'
       );
 
       const elements = stripe.elements();
       const cardElement = elements.create('card');
+      const container = document.querySelector('#card-element');
 
-      cardElement.mount('#card-element');
+      container.classList.add('border', 'px-2', 'py-5', 'rounded-xl')
+      cardElement.mount(container);
 
       const cardHolderName = document.getElementById('card-holder-name');
       const cardButton = document.getElementById('card-button');
@@ -115,11 +117,25 @@ const updateSteps = () => {
         );
 
         if (error) {
-          // Display "error.message" to the user...
-          console.log(error);
+          const errorMsgContainer = document.querySelector("#error-msg-stripe")
+          const message = document.createElement('p')
+          message.textContent = error.message;
+
+          errorMsgContainer.innerHTML = '';
+          errorMsgContainer.hidden = false;
+          errorMsgContainer.append(message);
+
+          setTimeout(() => {
+            errorMsgContainer.hidden = true;
+          }, 3000)
         } else {
           // The card has been verified successfully...
+          const spinner = document.querySelector('.spinner')
+          const btnText = document.querySelector('#button-text')
           const hiddenInput = document.createElement('input')
+
+          btnText.setAttribute('hidden', true)
+          spinner.hidden = false;
           hiddenInput.setAttribute('type', 'hidden')
           hiddenInput.setAttribute('name', 'paymentId')
           hiddenInput.setAttribute('value', paymentMethod.id)

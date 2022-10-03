@@ -34,6 +34,11 @@ class OrderController extends Controller
 
         Session::forget('shoppingCart');
 
-        return redirect(route('bracelet.index'));
+        return redirect(route('order.completed', uniqid()));
+    }
+
+    public function completed()
+    {
+        return view('order.completed');
     }
 }

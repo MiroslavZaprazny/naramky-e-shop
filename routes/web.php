@@ -31,6 +31,8 @@ Route::get('/shopping-cart', [ShoppingCartController::class, 'show'])->name('sho
 Route::get('/order', [OrderController::class, 'create'])->name('order.create');
 Route::post('/order', [OrderController::class, 'store'])->name('order.store');
 
+Route::get('/order-completed/{id}', [OrderController::class, 'completed'])->name('order.completed');
+
 Route::get('/login', [LoginController::class, 'create'])->name('login.create')->middleware('guest');
 Route::post('/login', [LoginController::class, 'store'])->name('login.store')->middleware('guest');
 Route::post('/logout', [LoginController::class, 'destroy'])->name('login.destroy')->middleware('auth');
