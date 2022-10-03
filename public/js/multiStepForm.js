@@ -77,6 +77,8 @@ const updateSteps = () => {
     const selectedPaymentContainer = document.querySelector('.selected-payment');
     selectedPaymentContainer.innerHTML = '';
 
+    const stripeContainer = document.querySelector('#stripe')
+
     if (selectedPayment === 'card') {
       const html =
         '<div class="flex justify-between items-center font-semibold text-lg"><div class="flex items-center space-x-2">' +
@@ -85,6 +87,47 @@ const updateSteps = () => {
         '<div> Platba kartou </div> </div> <div class="mr-6 text-md"> Zadarmo </div> </div>'
 
       selectedPaymentContainer.insertAdjacentHTML('afterbegin', html);
+      //show stripe
+      const stripe = Stripe(
+        "{{env('STRIPE_KEY')}}"
+      );
+
+      const elements = stripe.elements();
+      const cardElement = elements.create('card');
+
+      cardElement.mount('#card-element');
+
+      const cardHolderName = document.getElementById('card-holder-name');
+      const cardButton = document.getElementById('card-button');
+      const form = document.querySelector('#payment-form');
+
+      cardButton.addEventListener('click', async (e) => {
+        e.preventDefault();
+        const {
+          paymentMethod,
+          error
+        } = await stripe.createPaymentMethod(
+          'card', cardElement, {
+          billing_details: {
+            name: cardHolderName.value
+          }
+        }
+        );
+
+        if (error) {
+          // Display "error.message" to the user...
+          console.log(error);
+        } else {
+          // The card has been verified successfully...
+          const hiddenInput = document.createElement('input')
+          hiddenInput.setAttribute('type', 'hidden')
+          hiddenInput.setAttribute('name', 'paymentId')
+          hiddenInput.setAttribute('value', paymentMethod.id)
+          form.append(hiddenInput)
+          form.submit()
+        }
+      });
+      stripeContainer.hidden = false;
     } else if (selectedPayment === 'cash') {
       const html =
         '<div class="flex justify-between items-center font-semibold text-lg"><div class="flex items-center space-x-2">' +
@@ -93,7 +136,9 @@ const updateSteps = () => {
         '<div> Dobierka </div> </div> <div class="mr-6 text-md"> 1 € </div> </div>'
 
       selectedPaymentContainer.insertAdjacentHTML('afterbegin', html);
-
+      if (stripeContainer.hidden === false) {
+        stripeContainer.hidden = true;
+      }
       finalPrice += 1;
     }
 

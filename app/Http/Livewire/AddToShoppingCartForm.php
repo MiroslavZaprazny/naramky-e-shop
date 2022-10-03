@@ -19,7 +19,7 @@ class AddToShoppingCartForm extends Component
 
         $status = $cart->checkNumberOfProductsInStock($this->bracelet);
         if ($status === 'error') {
-            $this->emit('inStockError', $status['qty']);
+            $this->emit('inStockError');
             return;
         }
 

@@ -1,6 +1,6 @@
 <x-app-layout>
     <div class="flex justify-center">
-        <form method="POST" action={{ route('order.store') }} method="POST" class="w-160">
+        <form method="POST" action={{ route('order.store') }} method="POST" class="w-160" id="payment-form">
             @csrf
             <div class="progress-bar relative flex justify-between mb-20">
                 <div class="progress relative flex justify-between" id="progress"></div>
@@ -275,18 +275,24 @@
                     <div class="customer-info"></div>
                 </div>
 
+                <div id="stripe" class="mt-8">
+                    <input id="card-holder-name" type="text">
+                    <div id="card-element"></div>
+                </div>
+
                 <h4 class="font-semibold text-2xl text-gray-900 mt-8">
                     Celková cena:
                     <span id="price" data-initial-price={{ $cart->totalPrice }}>
                         {{ $cart->totalPrice }}
                     </span> €
                 </h4>
-
                 <div class="flex items-center justify-between mt-10 mb-20">
                     <x-prev-button :name="'Platba'" />
-                    <button type="submit"
+                    <button type="submit" id="card-button"
                         class="bg-dark-navy-blue hover:bg-light-navy-blue text-white rounded-lg px-6 py-3 transition ease-in duration-200">
-                        Potvrdiť objendávku
+                        <span id="button-text">
+                            Potvrdiť objendávku
+                        </span>
                     </button>
                 </div>
             </div>
@@ -296,4 +302,7 @@
 
 <script src="https://widget.packeta.com/v6/www/js/library.js"></script>
 <script src={{ asset('js/packeta.js') }}></script>
-<script src={{ asset('js/multiStepForm.js') }}></script>
+<script  src={{ asset('js/multiStepForm.js') }}></script>
+<script>
+ 
+</script>

@@ -10,6 +10,7 @@
     <!-- Fonts -->
     <link href="https://fonts.bunny.net/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
     <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script src="https://js.stripe.com/v3/"></script>
     <style>
         body {
             font-family: 'Nunito', sans-serif;

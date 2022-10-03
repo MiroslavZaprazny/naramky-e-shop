@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreOrderRequest;
+use App\Models\User;
 use App\Services\OrderService;
 use Illuminate\Support\Facades\Session;
+use App\Http\Requests\StoreOrderRequest;
 
 class OrderController extends Controller
 {
@@ -26,6 +27,8 @@ class OrderController extends Controller
             $request->input('shipping'),
             $request->input('payment')
         );
+
+        (new User)->charge($price * 100, $request->paymentId);
 
         $orderService->handleOrder($request, $price);
 

@@ -1,5 +1,5 @@
 <div>
-    <div class="mx-auto border-2 border-custom2 rounded-xl max-w-3xl">
+    <div class="mx-auto border-2 border-custom2 rounded-xl max-w-4xl">
         <div class="border-b-2 border-custom2 py-3 px-5">
             <h3 class="font-semibold text-2xl">
                 Váš nákupný košík
@@ -10,10 +10,10 @@
                 @forelse ((array)$items as $item)
                     <div class="flex justify-between  {{ $loop->last ? 'border-b-2 border-custom2 pb-2' : '' }}">
                         <a href={{ route('bracelet.show', $item['bracelet']['id']) }}
-                            class="text-gray-900 font-semibold hover:underline">
+                            class="text-gray-900 font-semibold text-lg hover:underline w-36">
                             {{ $item['bracelet']['title'] }}
                         </a>
-                        <div class="flex items-center justify-center space-x-6">
+                        <div class="flex items-center justify-center space-x-6 mr-24">
                             <button wire:click="removeItemFromShoppingCart({{ json_encode($item) }})">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-gray-700">
@@ -59,7 +59,7 @@
         </div>
     </div>
     @if (Session::has('shoppingCart') && Session::get('shoppingCart')->totalQuantity != 0)
-        <div class="ml-auto max-w-3xl -mr-12 mt-12">
+        <div class="ml-auto max-w-3xl -mr-28 mt-12">
             <a href={{ route('order.create') }}
                 class="flex items-center bg-dark-green hover:bg-custom2 text-white px-3 py-4 rounded-full transition ease-in duration-200 w-32">
                 Checkout
