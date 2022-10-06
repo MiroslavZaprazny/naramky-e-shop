@@ -6,6 +6,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ShoppingCartController;
+use App\Models\Bracelet;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -21,10 +22,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::view('/', 'index');
 
-Route::get('/bracelets', [BraceletController::class, 'index'])->name('bracelet.index');
-Route::get('/bracelets/{bracelet:id}', [BraceletController::class, 'show'])->name('bracelet.show');
-Route::get('/bracelets-create', [BraceletController::class, 'create'])->name('bracelet.create')->middleware('admin');
-Route::post('/bracelets-create', [BraceletController::class, 'store'])->name('bracelet.store')->middleware('admin');
+Route::resource('bracelet', BraceletController::class)->except('destroy');
+Route::delete('/bracelet', [BraceletController::class, 'destroy'])->name('bracelet.destroy');
 
 Route::get('/shopping-cart', [ShoppingCartController::class, 'show'])->name('shopping-cart.show');
 

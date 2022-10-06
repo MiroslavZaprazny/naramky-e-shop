@@ -8,6 +8,7 @@ use App\Mail\OrderShippedAdmin;
 use App\Mail\OrderShippedCustomer;
 use Illuminate\Support\Facades\Mail;
 use App\Http\Requests\StoreOrderRequest;
+use App\Models\Bracelet;
 use App\Models\OrderCustomerPersonalInfo;
 
 class OrderService
@@ -46,7 +47,6 @@ class OrderService
 
     public function handleOrder(StoreOrderRequest $request, int $price)
     {
-        // dd($request->session());
         $order = Order::create([
             'shipping' => $request->input('shipping'),
             'payment' => $request->input('payment'),
@@ -75,11 +75,24 @@ class OrderService
         }
 
         $this->sendMailing($order, $customerInfo);
+        
+        $this->decrementQtyInStock($braceletId);
     }
 
     private function sendMailing(Order $order, OrderCustomerPersonalInfo $customerInfo)
     {
         Mail::to($customerInfo)->send(new OrderShippedCustomer($order));
         Mail::to('nikikays.business@gmail.com')->send(new OrderShippedAdmin($order));
+    }
+
+    private function decrementQtyInStock($braceletId)
+    {
+        $bracelet = Bracelet::findOrFail($braceletId);
+        if ($bracelet->qty_in_stock > 1) {
+            $bracelet->qty_in_stock--;
+            $bracelet->save();
+        } else {
+            $bracelet->delete();
+        }
     }
 }

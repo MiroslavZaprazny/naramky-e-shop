@@ -10,7 +10,7 @@ class AdminPanelController extends Controller
     public function index()
     {
         return view('admin.index', [
-            'bracelets' => Bracelet::select('id', 'title', 'price', 'created_at')->get()
+            'bracelets' => Bracelet::select('id', 'title', 'price', 'created_at', 'qty_in_stock')->get()
         ]);
     }
 }

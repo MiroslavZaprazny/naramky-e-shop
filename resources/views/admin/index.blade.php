@@ -1,11 +1,10 @@
 <x-app-layout>
-    <div class="px-24 py-12">
+    <div class="px-24 py-12" x-data="{ show: false }">
         <div class="mb-10 w-40">
             <a href={{ route('bracelet.create') }}
                 class="flex items-center bg-dark-navy-blue hover:bg-light-navy-blue text-white rounded-xl px-3 py-3 transition ease-in duration-200">
                 Pridať náramok
-                <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5"
-                    stroke="currentColor" class="w-6 h-6">
+                <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v12m6-6H6" />
                 </svg>
             </a>
@@ -28,6 +27,10 @@
                                     <th scope="col"
                                         class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
                                         Status
+                                    </th>
+                                    <th scope="col"
+                                        class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
+                                        Počet
                                     </th>
                                     <th scope="col"
                                         class="px-6 py-3 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">
@@ -62,10 +65,13 @@
                                             </span>
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap">
+                                            {{ $bracelet->qty_in_stock }}
+                                        </td>
+                                        <td class="px-6 py-4 whitespace-nowrap">
                                             {{ $bracelet->created_at->diffForHumans() }}
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-left text-sm font-medium w-64">
-                                            <a href="#">
+                                            <a href={{ route('bracelet.edit', $bracelet->id) }}>
                                                 <svg fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                                                     stroke="currentColor"
                                                     class="w-7 h-7 ml-11 text-blue-900 hover:text-blue-800">
@@ -75,14 +81,7 @@
                                             </a>
                                         </td>
                                         <td class="px-6 py-4 whitespace-nowrap text-left text-sm font-medium w-64">
-                                            <a href="#">
-                                                <svg xmlns="http://www.w3.org/2000/svg" fill="none"
-                                                    viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
-                                                    class="w-7 h-7 ml-9 text-red-500 hover:text-red-600">
-                                                    <path stroke-linecap="round" stroke-linejoin="round"
-                                                        d="M6 18L18 6M6 6l12 12" />
-                                                </svg>
-                                            </a>
+                                            <x-admin-panel.table-delete-button :bracelet="$bracelet" />
                                         </td>
                                     </tr>
                                 @endforeach
@@ -91,6 +90,14 @@
                     </div>
                 </div>
             </div>
+            @empty($bracelet)
+                <div class="grid place-items-center mt-24">
+                    <h4 class="font-semibold text-xl text-gray-700">
+                        Na sklade nie sú žiadne produkty...
+                    </h4>
+                </div>
+            @endempty
         </div>
+        <x-admin-panel.modal />
     </div>
 </x-app-layout>

@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('bracelet_images', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('bracelet_id')->constrained();
+            $table->foreignId('bracelet_id')->constrained()->cascadeOnDelete();
             $table->string('filename');
             $table->timestamps();
         });

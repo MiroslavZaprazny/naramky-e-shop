@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreBraceletRequest;
+use App\Http\Requests\UpdateBraceletRequest;
 use App\Models\Bracelet;
-use App\Models\BraceletImage;
+use App\Services\BraceletService;
+use Illuminate\Http\Request;
 
 class BraceletController extends Controller
 {
@@ -27,31 +29,33 @@ class BraceletController extends Controller
         return view('bracelets.create');
     }
 
-    public function store(StoreBraceletRequest $request)
+    public function store(StoreBraceletRequest $request, BraceletService $braceletService)
     {
-        $thumbnail = $request->file('thumbnail');
-
-        $thumbnailName = $thumbnail->getClientOriginalName();
-        $thumbnail->move(public_path() . '/images', $thumbnailName);
-
-        $bracelet = Bracelet::create([
-            'title' => $request->input('title'),
-            'category_name' => $request->input('category_name'),
-            'description' => $request->input('description'),
-            'thumbnail' => 'images/' . $thumbnailName,
-            'price' => $request->input('price'),
-        ]);
-
-        foreach ($request->file('pictures') as $picture) {
-            $thumbnailName =  $picture->getClientOriginalName();
-            $picture->move(public_path() . '/images/bracelet-imgs', $thumbnailName);
-
-            BraceletImage::create([
-                'bracelet_id' => $bracelet->id,
-                'filename' => $thumbnailName
-            ]);
-        }
+        $braceletService->createBracelet($request);
 
         return redirect(route('admin.index'));
+    }
+
+    public function edit(Bracelet $bracelet)
+    {
+        $bracelet->load('images');
+
+        return view('bracelets.edit', [
+            'bracelet' => $bracelet
+        ]);
+    }
+
+    public function update(Bracelet $bracelet, UpdateBraceletRequest $request)
+    {
+        $bracelet->update($request->validated());
+
+        return redirect('/admin-panel');
+    }
+
+    public function destroy(Request $request)
+    {
+        Bracelet::findOrFail($request->input('id'))->delete();
+
+        return redirect('/admin-panel');
     }
 }
