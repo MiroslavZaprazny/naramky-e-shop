@@ -1,12 +1,11 @@
-<div class="px-5 lg:px-24 py-8 md:py-24">
+<div class="px-2 lg:px-24 py-8 lg:py-24">
     <h4 class="font-semibold text-3xl text-gray-800 text-center">
         Náramky dostupné na sklade
     </h4>
     <div
-        class="main-section flex flex-col items-center justify-center md:items-start md:justify-start md:flex-row md:space-x-12">
+        class="main-section flex flex-col items-center justify-center lg:items-start lg:justify-start lg:flex-row md:space-x-12">
         <livewire:bracelet-filtering />
-
-        <div class="main-section mt-16 grid grid-cols-6 justify-center items-center md:gap-x-10 gap-y-8">
+        <div class="main-section mt-12 md:mt-16 grid lg:grid-cols-6 justify-center items-center md:gap-x-10 gap-y-8">
             @foreach ($bracelets as $bracelet)
                 <a href={{ route('bracelet.show', $bracelet->id) }}
                     class="flex flex-col h-96 w-64 md:w-96 col-span-3 md:col-span-6 xl:col-span-3 lg:col-span-4 col-start-2 bg-custom hover:bg-custom2 rounded-lg rounded-b-2xl items-center transition ease-in duration-300">

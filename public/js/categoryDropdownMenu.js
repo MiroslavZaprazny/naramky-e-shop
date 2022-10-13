@@ -11,7 +11,7 @@ dropdownButton.addEventListener('click', (e) => {
   chevron.classList.toggle('rotate')
 
   if (isDropDownMenuOpen === true) {
-    menu.style.opacity = '1';
+    menu.style.display = "flex";
     dropdownButton.classList.remove('hover:bg-light-green-500');
     button1.removeAttribute('disabled');
     button2.removeAttribute('disabled');
@@ -19,7 +19,7 @@ dropdownButton.addEventListener('click', (e) => {
     button1.style.cursor = 'pointer'
     button2.style.cursor = 'pointer'
   } else {
-    menu.style.opacity = '0';
+    menu.style.display = "none";
     dropdownButton.classList.add('hover:bg-light-green-500');
     button1.style.cursor = 'default'
     button2.style.cursor = 'default'

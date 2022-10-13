@@ -1,7 +1,7 @@
 <div class="px-12 md:px-24 xl:px-44 py-8 lg:py-32 h-screen antialiased">
     <div class="flex justify-center space-x-16">
-        <div>
-            <h4 class="text-gray-900 font-semibold text-3xl md:text-5xl">
+		  <div>
+            <h4 class="text-gray-900 font-semibold text-4xl md:text-5xl">
                 Ručne vyrábané náramky z prírodných minerálov!
             </h4>
             <p class="leading-6 md:leading-9 mt-5 text-gray-700 text- lg:text-lg">

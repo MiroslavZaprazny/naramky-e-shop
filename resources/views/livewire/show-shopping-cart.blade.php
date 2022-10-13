@@ -1,4 +1,4 @@
-<div class="mx-auto max-w-4xl">
+<div class="mx-auto max-w-4xl px-2">
     <div class=" border-2 border-custom2 rounded-xl">
         <div class="border-b-2 border-custom2 py-3 px-5">
             <h3 class="font-semibold text-2xl">
@@ -10,10 +10,10 @@
                 @forelse ((array)$items as $item)
                     <div class="flex justify-between  {{ $loop->last ? 'border-b-2 border-custom2 pb-2' : '' }}">
                         <a href={{ route('bracelet.show', $item['bracelet']['id']) }}
-                            class="text-gray-900 font-semibold text-lg hover:underline w-36">
+                            class="text-gray-900 font-semibold text-lg hover:underline w-24 md:w-36">
                             {{ $item['bracelet']['title'] }}
                         </a>
-                        <div class="flex items-center justify-center space-x-6 mr-24">
+                        <div class="flex items-center justify-center space-x-6 mr-4 md:mr-24">
                             <button wire:click="removeItemFromShoppingCart({{ json_encode($item) }})">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
                                     stroke-width="1.5" stroke="currentColor" class="w-6 h-6 text-gray-700">

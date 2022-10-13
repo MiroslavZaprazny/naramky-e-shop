@@ -76,13 +76,13 @@ class OrderService
 
         $this->sendMailing($order, $customerInfo);
         
-        $this->decrementQtyInStock($braceletId);
+        /* $this->decrementQtyInStock($braceletId); */
     }
 
     private function sendMailing(Order $order, OrderCustomerPersonalInfo $customerInfo)
     {
-        Mail::to($customerInfo)->send(new OrderShippedCustomer($order));
-        Mail::to('nikikays.business@gmail.com')->send(new OrderShippedAdmin($order));
+        Mail::to($customerInfo)->queue(new OrderShippedCustomer($order));
+        Mail::to('nikikays.business@gmail.com')->queue(new OrderShippedAdmin($order));
     }
 
     private function decrementQtyInStock($braceletId)
