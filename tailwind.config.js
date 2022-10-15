@@ -24,7 +24,8 @@ module.exports = {
         'dark-green-500': '#A0D995',
         'dark-blue': '#0b1629',
         'progress-green': '#1C6758',
-        'progress-line-green': '#90C8AC'
+        'progress-line-green': '#90C8AC',
+        'lime': '#B6E388'
       }
     },
   },

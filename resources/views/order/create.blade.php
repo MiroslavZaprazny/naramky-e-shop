@@ -1,96 +1,85 @@
 <x-app-layout>
     <div class="flex justify-center">
-        <form method="POST" action={{ route('order.store') }} method="POST" class="w-160" id="payment-form">
+        <form method="POST" action={{ route('order.store') }} method="POST" class="w-88 lg:w-160" id="payment-form">
             @csrf
-            <div class="progress-bar relative flex justify-between mb-20">
+            <div class="progress-bar relative flex justify-between mb-28">
                 <div class="progress relative flex justify-between" id="progress"></div>
                 <div class="step-active progress-step flex items-center justify-center w-9 h-9 rounded-full border z-10">
                     1
-                    <div class="absolute top-12 -left-8 text-black w-36 font-semibold">
+                    <div class="absolute top-12 -left-2 lg:-left-12 text-black w-20 lg:w-36 font-semibold text-center">
                         Fakturačné údaje
                     </div>
                 </div>
                 <div
                     class="progress-step flex items-center justify-center w-9 h-9 rounded-full border-2 border-progress-green text-black bg-white z-10">
                     2
-                    <div class="absolute top-12 left-48 text-black w-36 font-semibold">
+                    <div class="absolute top-12 left-24 lg:left-48 text-black w-36 font-semibold">
                         Doprava
                     </div>
                 </div>
                 <div
                     class="progress-step flex items-center justify-center w-9 h-9 rounded-full border-2 border-progress-green text-black bg-white z-10">
                     3
-                    <div class="absolute top-12 right-48  text-black w-36 font-semibold text-right">
+                    <div class="absolute top-12 right-24 lg:right-48 text-black w-36 font-semibold text-right">
                         Platba
                     </div>
                 </div>
                 <div
                     class="progress-step flex items-center justify-center w-9 h-9 rounded-full border-2 border-progress-green text-black bg-white z-10">
                     4
-                    <div class="absolute top-12 -right-12 text-black w-36 font-semibold text-right">
-                        Súhrn objednávky
+                    <div
+                        class="absolute top-12 -right-6 lg:-right-14 text-black w-20 lg:w-36 font-semibold text-center">
+                        Súhrn
                     </div>
                 </div>
             </div>
-            <div class="step active">
+            <div class="step active pb-10">
                 <h4 class="font-semibold text-3xl text-gray-700 text-center">
                     Fakturačné údaje
                 </h4>
-                <div class="flex items-center justify-center space-x-4 mt-10">
+                <div
+                    class="flex flex-col lg:flex-row items-center justify-center space-y-2 lg:space-y-0 lg:space-x-4 mt-10">
                     <div>
                         <label class="block font-semibold text-lg mb-1">Meno</label>
                         <input type="text" name="first_name" class="border rounded-md h-12 w-64 px-2">
-                        <p class="error-msg text-sm text-red-500 mt-1" style="opacity:0;">
-                            Err
-                        </p>
+                        <x-multistep-form.error-message />
                     </div>
                     <div>
                         <label class="block font-semibold text-lg mb-1">Priezvisko</label>
                         <input type="text" name="last_name" class="border rounded-md h-12 w-64 px-2">
-                        <p class="error-msg text-sm text-red-500 mt-1" style="opacity: 0;">
-                            Err
-                        </p>
+                        <x-multistep-form.error-message />
                     </div>
                 </div>
-                <div class="flex items-center justify-center space-x-4 mt-5">
+                <div
+                    class="flex flex-col lg:flex-row items-center justify-center space-y-2 lg:space-y-0 lg:space-x-4 mt-2 lg:mt-5">
                     <div>
                         <label class="block font-semibold text-lg mb-1">Ulica a číslo domu</label>
                         <input type="text" name="address" class="border rounded-md h-12 w-64 px-2">
-                        <p class="error-msg text-sm text-red-500 mt-1" style="opacity:0;">
-                            Err
-                        </p>
+                        <x-multistep-form.error-message />
                     </div>
                     <div>
                         <label class="block font-semibold text-lg mb-1">PSČ</label>
                         <input type="text" name="zip" class="border rounded-md h-12 w-64 px-2">
-                        <p class="error-msg text-sm text-red-500 mt-1" style="opacity: 0;">
-                            Err
-                        </p>
+                        <x-multistep-form.error-message />
                     </div>
                 </div>
-                <div class="flex items-center justify-center space-x-4 mt-5">
+                <div class="flex items-center justify-center mt-2 lg:mt-5">
                     <div>
                         <label class="block font-semibold text-lg mb-1">Mesto</label>
-                        <input type="text" name="town" class="border rounded-md h-12 w-130 px-2">
-                        <p class="error-msg text-sm text-red-500 mt-1" style="opacity:0;">
-                            Err
-                        </p>
+                        <input type="text" name="town" class="border rounded-md h-12 w-64 lg:w-130 px-2">
+                        <x-multistep-form.error-message />
                     </div>
                 </div>
-                <div class="flex items-center justify-center space-x-4 mt-5">
+                <div class="flex flex-col lg:flex-row items-center justify-center space-y-2 lg:space-y-0 lg:space-x-4 mt-2 lg:mt-5">
                     <div>
                         <label class="block font-semibold text-lg mb-1">Email</label>
                         <input type="email" name="email" class="border rounded-md h-12 w-64 px-2">
-                        <p class="error-msg text-sm text-red-500 mt-1" style="opacity: 0;">
-                            Err
-                        </p>
+                        <x-multistep-form.error-message />
                     </div>
                     <div>
                         <label class="block font-semibold text-lg mb-1">Telefón</label>
                         <input type="text" name="phone_number" class="border rounded-md h-12 w-64 px-2">
-                        <p class="error-msg text-sm text-red-500 mt-1" style="opacity: 0;">
-                            Err
-                        </p>
+                        <x-multistep-form.error-message />
                     </div>
                 </div>
                 <div class="flex justify-end mt-8">
@@ -305,4 +294,5 @@
 <script src="https://widget.packeta.com/v6/www/js/library.js"></script>
 <script src={{ asset('js/packeta.js') }}></script>
 <script src={{ asset('js/multiStepForm.js') }}></script>
+
 <script></script>

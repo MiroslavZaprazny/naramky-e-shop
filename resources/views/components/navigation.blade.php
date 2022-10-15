@@ -12,16 +12,17 @@
             </h3>
         </div>
         <div class="sm:hidden col-start-12">
-            <button type="button" class="block" id="navbar-toggle">
+            <button type="button" class="block relative" id="navbar-toggle">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                     stroke="currentColor" class="w-6 h-6">
                     <path stroke-linecap="round" stroke-linejoin="round"
                         d="M3.75 6.75h16.5M3.75 12h16.5m-16.5 5.25h16.5" />
                 </svg>
             </button>
+            <livewire:product-count />
         </div>
     </div>
-    <div class="hidden sm:flex ml-5 mt-2 sm:-mt-1 space-y-2 sm:space-y-0 flex-col 
+    <div class="hidden sm:flex ml-5 mt-7 sm:-mt-1 space-y-2 sm:space-y-0 flex-col 
             sm:flex-row items-start sm:items-center sm:space-x-8 font-semibold text-gray-800"
         id="collapse-menu">
         <div class="p-3 w-full sm:w-auto rounded-full hover:bg-gray-100 transition ease-in duration-150">
@@ -58,6 +59,6 @@
                 </a>
             </div>
         @endguest
-        <livewire:shopping-cart-button />
+        <x-shopping-cart-button />
     </div>
 </header>

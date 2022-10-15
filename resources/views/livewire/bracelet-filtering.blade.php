@@ -3,10 +3,10 @@
         <div>
             <button wire:click="setCategory('All')"
                 class="items-center font-semibold text-2xl text-gray-800 
-                    bg-dark-green-500 hover:text-gray-900 py-3 px-4 
+                    bg-lime hover:text-gray-900 py-3 px-4 
                     rounded-full transition ease-in duration-200 hover:bg-light-green-500 mt-7 sm:mt-0 mb-6
                      {{ $category === 'All' ? 'hidden cursor-default' : 'flex cursor-pointer' }}">
-                Vrátiť sa na všetky náramky
+                Zobraziť všetky náramky
             </button>
             <button
                 class="flex items-center font-semibold text-2xl text-gray-800 

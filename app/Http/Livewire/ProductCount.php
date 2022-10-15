@@ -2,12 +2,13 @@
 
 namespace App\Http\Livewire;
 
-use Illuminate\Support\Facades\Session;
 use Livewire\Component;
+use Illuminate\Support\Facades\Session;
 
-class ShoppingCartButton extends Component
+class ProductCount extends Component
 {
     public $quantity;
+    public $responsiveDesign = false;
 
     protected $listeners = ['itemWasAddedToCart', 'itemWasRemovedFromCart'];
 
@@ -23,6 +24,6 @@ class ShoppingCartButton extends Component
 
     public function render()
     {
-        return view('livewire.shopping-cart-button');
+        return view('livewire.product-count');
     }
 }

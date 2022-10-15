@@ -1,6 +1,6 @@
 <div class="mx-auto max-w-4xl px-2">
     <div class=" border-2 border-custom2 rounded-xl">
-        <div class="border-b-2 border-custom2 py-3 px-5">
+        <div class="border-b-2 border-custom2 py-6 px-5">
             <h3 class="font-semibold text-2xl">
                 Váš nákupný košík
             </h3>
@@ -36,9 +36,9 @@
                         </p>
                     </div>
                 @empty
-                    <div class="flex items-center justify-center">
+                    <div class="flex flex-col md:flex-row items-center justify-center">
                         Váš nakupný košík je prázdny...
-                        <span class="font-bold ml-2 hover:underline underline-offset-2">
+                        <span class="font-bold ml-2 underline md:no-underline md:hover:underline underline-offset-2 mt-4 md:mt-0">
                             <a href={{ route('bracelet.index') }}>
                                 Prejdite na prehľad náramkov
                             </a>
