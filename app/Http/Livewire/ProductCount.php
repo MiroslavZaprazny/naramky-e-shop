@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Session;
 class ProductCount extends Component
 {
     public $quantity;
-    public $responsiveDesign = false;
+    public $mobileView = false;
 
     protected $listeners = ['itemWasAddedToCart', 'itemWasRemovedFromCart'];
 

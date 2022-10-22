@@ -3,7 +3,7 @@
     <a href={{ route('shopping-cart.show') }} class="sm:hidden relative flex items-center">
         Košík
         @livewire('product-count', [
-            'responsiveDesign' => true
+            'mobileView' => true
         ])
     </a>
     <a href={{ route('shopping-cart.show') }} class="relative">

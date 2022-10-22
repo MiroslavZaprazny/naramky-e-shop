@@ -11,6 +11,7 @@ module.exports = {
         '130': '32.5rem',
         '160': '40rem',
         '88': "22rem",
+        '94': "23.5rem"
       },
       colors: {
         'dark-green': '#809A6F',

@@ -62,7 +62,7 @@
         <div class="mt-12">
             <div class="flex items-center justify-between">
                 <a href={{ route('bracelet.index') }}
-                    class="flex items-center bg-dark-green hover:bg-custom2 text-white px-3 py-4 rounded-full transition ease-in duration-200">
+                    class="flex items-center bg-dark-green hover:bg-custom2 text-white text-sm lg:text-base px-3 py-4 rounded-full transition ease-in duration-200">
                     Pokračovať v nakupovaní
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="w-5 h-5 ml-2">
@@ -71,7 +71,7 @@
                     </svg>
                 </a>
                 <a href={{ route('order.create') }}
-                    class="flex items-center bg-progress-green hover:bg-green-700 text-white px-3 py-4 rounded-full transition ease-in duration-200 w-32">
+                    class="flex items-center bg-progress-green hover:bg-green-700 text-white text-sm lg:text-base px-3 py-4 rounded-full transition ease-in duration-200 w-32">
                     Checkout
                     <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"
                         stroke="currentColor" class="w-5 h-5 ml-2">

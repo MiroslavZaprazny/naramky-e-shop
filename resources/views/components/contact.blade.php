@@ -1,5 +1,5 @@
 <div class="w-full bg-gray-50 h-64 flex flex-col items-start lg:items-center justify-center px-16 space-y-6 lg:space-y-8" id="kontakt">
-    <div class="flex flex-col lg:flex-row items-start lg:items-center space-y-6 lg:space-x-4">
+    <div class="flex flex-col lg:flex-row items-start lg:items-center space-y-6 lg:space-y-0 lg:space-x-4">
         <div class="flex items-center">
             <div class="rounded-full bg-gray-200 px-3 py-3">
                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5"

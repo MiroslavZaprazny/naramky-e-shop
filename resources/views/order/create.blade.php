@@ -1,6 +1,6 @@
 <x-app-layout>
     <div class="flex justify-center">
-        <form method="POST" action={{ route('order.store') }} method="POST" class="w-88 lg:w-160" id="payment-form">
+        <form method="POST" action={{ route('order.store') }} method="POST" class="w-94 lg:w-160" id="payment-form">
             @csrf
             <div class="progress-bar relative flex justify-between mb-28">
                 <div class="progress relative flex justify-between" id="progress"></div>
@@ -93,10 +93,10 @@
                 <button type="button"
                     class="packeta-selector-open border rounded-lg px-2 py-5 mt-4 font-semibold text-lg w-full hover:border-gray-700 hover:border-2 transition ease-in duration-200"
                     onclick="Packeta.Widget.pick(packetaApiKey, showSelectedPickupPoint, packetaOptions)">
-                    <div class="flex items-center justify-between">
+                    <div class="flex items-center justify-between space-x-2">
                         <div class="flex items-center space-x-2">
                             <input type="radio" name="shipping" value="packeta-dobierka" id="packeta-radio">
-                            <svg width="30" height="22" viewBox="0 0 30 22" version="1.1"
+                            <svg width="30" height="22" viewBox="0 0 30 22" version="1.1" class="flex-shrink-0"
                                 xmlns="http://www.w3.org/2000/svg">
                                 <rect fill="#BA1B02" x="0" y="0" width="30" height="22"
                                     rx="4">
@@ -113,8 +113,8 @@
                                 Zásielkovňa - doručenie na odberné miesto
                             </div>
                         </div>
-                        <div class="mr-6 text-md">
-                            3,30 €
+                        <div class="mr-2 lg:mr-6">
+                            3,30€
                         </div>
                     </div>
                 </button>
@@ -148,8 +148,8 @@
                                 GLS - doručenie kuriérom
                             </div>
                         </div>
-                        <div class="mr-6 text-md">
-                            4 €
+                        <div class="mr-6">
+                            4€
                         </div>
                     </div>
                 </button>
